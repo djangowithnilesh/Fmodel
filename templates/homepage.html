@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Document</title>
+    {% include 'cdnlines.html'%}
+</head>
+<style media="screen">
+    .jumbotron{margin: 10px 200px; background-color: blue;}
+    h1{margin-top: 70px; text-shadow: 0px 0px 5px red, 0px 0px 10px blue;}
+    body{background-color: #99ddff;}
+</style>
+<body>
+    <h1 class="text-center text-white display-3 font-weight-bold ">Wellcome to NHP Information Dashbord</h1>
+    <div class="jumbotron text-center my-2">
+        <a class="mx-4 btn btn-success" href="{% url 'Hyderabad'%}">Hyderabad</a>
+        <a class="mx-4 btn btn-primary" href="{% url 'Banglore'%}">Banglore</a>
+        <a class="mx-4 btn btn-warning" href="{% url 'Pune'%}">Pune</a>
+        <a class="mx-4 btn btn-danger" href="{% url 'Chennai'%}">Chennai</a>
+    </div>
+</body>
+</body>
+</html>

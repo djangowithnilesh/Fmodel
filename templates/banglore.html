@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    {% include 'cdnlines.html' %}
+</head>
+<style media="screen">
+    body{background-color: #99ddff;}
+ </style>
+<body>
+    {% include 'navbar.html'%}
+    <div class="container-fluid">
+        <h2 class="text-center display-4 font-weight-bold">Banglore Famous Things</h2>
+        <div class="row">
+            <div class="col-md-4">
+              <img src="{% static 'images/Bang1.jpg'%}" style="height: 100%; width: 100%;" class="img-thumbnail">
+            </div>
+            <div class="col-md-4">
+              <img src="{% static 'images/Bang2.jpg'%}" style="height: 100%; width: 100%;" class="img-thumbnail">
+            </div>
+            <div class="col-md-4">
+              <img src="{% static 'images/Bang3.jpg'%}" style="height: 100%; width: 100%;" class="img-thumbnail">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a href="{% url 'Hyderabad'%}" class="btn btn-success mt-2">Hyderabad</a>
+            </div>
+            <div class="col-md-6">
+                <h1 class="text-center display-5">Banglore Employees Information</h1>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="{% url 'Pune'%}" class="btn btn-primary mt-2">Pune</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row text-center">
+            <div class="offset-md-4 col-md-4">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="com">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                {% if employees %}
+                <table class="table text-center table-bordered">
+                    <thead class="bg-success text-white">
+                        <tr>
+                        <th>First_Name</th>
+                        <th>Last_Name</th>
+                        <th>Salary</th>
+                        <th>Email</th>
+                        <th>Company</th>
+                        <th>City</th>
+                        <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-dark text-white">
+                        {% for i in employees %}
+                        <tr>
+                            <td>{{i.first_name}}</td>
+                            <td>{{i.last_name}}</td>
+                            <td>{{i.salary}}</td>
+                            <td>{{i.email}}</td>
+                            <td>{{i.company}}</td>
+                            <td>{{i.city}}</td>
+                            <td>{{i.address}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
